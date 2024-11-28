@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import logo from "/logoimg/logo.png"
 import { Link } from 'react-router-dom';
+import { FaArrowRight } from "react-icons/fa6";
+
 
 const Captainlogin = () => {
     const [email, setEmail] = useState('');
@@ -19,7 +21,10 @@ const Captainlogin = () => {
     return (
         <div className='p-7 h-screen flex flex-col justify-between'>
             <div>
-                <img className='w-[30%] mb-8' src={logo} alt="App Logo" />
+                <div className='flex items-center mb-8 gap-2'>
+                    <img className='w-[30%]' src={logo} alt="App Logo" />
+                    <div className='flex items-center gap-2 text-xl justify-center'><span className='text-lg font-bold'>Captain</span><FaArrowRight /></div>
+                </div>
                 <form onSubmit={(e) => {
                     submitHandler(e)
                 }}>
