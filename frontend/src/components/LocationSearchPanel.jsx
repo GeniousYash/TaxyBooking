@@ -1,26 +1,27 @@
 import React from 'react'
-import { FaMapPin } from "react-icons/fa6";
 
-const LocationSearchPanel = (props) => {
-    // sample array for location
-    const locations = [
-        "24B, Near ByPass Road, Dharuhera, Haryana",
-        "22B, Near PizzaHut, Jaipur, Rajasthan",
-        "38B, Near ByPass Road, Badarpur Border, Delhi",
-        "128,1st floor, Genesis Mall, Rajasthan, Delhi",
-    ];
+const LocationSearchPanel = ({ suggestions, setVehiclePanel, setPanelOpen, setPickup, setDestination, activeField }) => {
+
+    const handleSuggestionClick = (suggestion) => {
+        if (activeField === 'pickup') {
+            setPickup(suggestion)
+        } else if (activeField === 'destination') {
+            setDestination(suggestion)
+        }
+        // setVehiclePanel(true)
+        // setPanelOpen(false)
+    }
+
     return (
         <div>
+            {/* Display fetched suggestions */}
             {
-                locations.map(function (e, i) {
-                    return <div key={i} onClick={() => {
-                        props.setVehiclePanel(true)
-                        props.setPanelOpen(false)
-                    }} className='flex gap-4 border-2 p-3 border-gray-100 active:border-black rounded-xl justify-center my-2 items-start'>
-                        <h3 className='bg-[#eee] h-[40px] w-[40px] flex items-center justify-center rounded-full'>{<FaMapPin />}</h3>
-                        <h4 className='font-medium'>{e}</h4>
+                suggestions.map((elem, idx) => (
+                    <div key={idx} onClick={() => handleSuggestionClick(elem)} className='flex gap-4 border-2 p-3 border-gray-50 active:border-black rounded-xl items-center my-2 justify-start'>
+                        <h2 className='bg-[#eee] h-8 flex items-center justify-center w-12 rounded-full'><i className="ri-map-pin-fill"></i></h2>
+                        <h4 className='font-medium'>{elem}</h4>
                     </div>
-                })
+                ))
             }
         </div>
     )
