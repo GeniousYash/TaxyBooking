@@ -1,2 +1,2 @@
-# TaxyBooking
+# TaxyBooking (Learning and Practice)
 MERN Project
